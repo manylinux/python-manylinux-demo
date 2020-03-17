@@ -25,7 +25,7 @@ deploy:
   provider: s3
   access_key_id: AKIAJCVE5RZBSCMPSFSQ
   secret_access_key:
-    secure: IdKBcym/65XUCYl/wBsyXYuKteY/tZf3DRJk3sVmQhgRlJNSRyaGCxXe6gkr/J/K9FpblkyqHpN4Eqqj+FXBPXGQ2QwfAIQehSoED0/R6RzqN/MsId7PTKGKDwryJOtYNXdzD4Gb4ErD9X4I6MKZd5xgWQx9hU0jO+XurMgWB4E=
+    secure: "IwFrgncz9SmeIlB93ZGW58ByD53Fk7AjZx6yzJjunm1qvoATFJRR8lGM7VfTfLu8f4JHld0XnJz5F5GJh1F9MZLPM8KoAC05pXt9iTyQh9da0bQR8jI6mh3OR9DTRaLg9/eWEyE88h0MDAwDHw/x3AP1+38rqKwPtg7FJdxKKhMyC3+x+8Y3mp6Dsmb/h1oajF5fQ7SylaIwgUd0AjROpLxe0+xfpUgDIJtR8IIaxqfaY9bow6zY+jsmfN6XCe+LUgZJ7miAyANffH27N2unX55Sd8V210oySwCkRB2cMowivEE4BUsW1cyN3cdSNQUL50bK5PtD/u62JbkhOaq8ay+l8edLu+wWAf2/ASMnuQMAshf709UQDe7qU9o7q/kASrJM5heIZaua1quEC1L8QdUFVvdzmpDb9+cBAceUzszU7f6gI+YfVhVED9if/irfSTN2mlNJuAZsf4FKn0G/u5XCOfxvT5/4P1vA+M7mZ/B1jibbEYS2YCwVEsLb4EpHjO0KbXV+DkrTGml7vYU904TE1Y5kS8cWXv/HUD+D0Oa/f8HxrYhNkA0TF/+KmxSAfNGq/PbdmHHTxvWho7jUQ7hv7S0lIC1a+Zi6U1AC65L1tchcRnGT680wVhtai4xLvksMCM1c1k+9Acq459LHqbA43d/z7dH5cqsMp8ML8Ac="
   bucket: parsely-artifacts
   skip_cleanup: true
   local_dir: wheelhouse
