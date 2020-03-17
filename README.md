@@ -4,6 +4,9 @@ This project builds wheels for all our dependencies to put on our PyPI server. I
 
 [![Build Status](https://travis-ci.org/Parsely/manylinux-wheel-builder.svg?branch=master)](https://travis-ci.org/Parsely/manylinux-wheel-builder)
 
+To add more packages to our list of wheels to build, update `dev-requirements.txt`. 
+
+`Cython` should always be at the top since it is used to build more efficient versions of many other packages.
 
 This uses Travis-CI to build
 [PEP 513](https://www.python.org/dev/peps/pep-0513/)-compatible
