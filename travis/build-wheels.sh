@@ -15,11 +15,11 @@ function repair_wheel {
 }
 
 
-# Install a system package required by our library
+# Install packages required for wheel building
 yum install -y zlib-devel bzip2-devel ncurses-devel sqlite-devel \
 readline-devel tk-devel gdbm-devel db4-devel libpcap-devel\
 xz-devel gpg atlas-devel libev-devel libev snappy-devel
-python-imaging openjpeg-devel freetype-devel libpng-devel \
+openjpeg-devel freetype-devel libpng-devel \
 libffi-devel python-lxml postgresql95-libs \
 postgresql95-devel lapack-devel python \
 python-devel python-setuptools pcre pcre-devel \
