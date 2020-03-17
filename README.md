@@ -9,7 +9,7 @@ This uses Travis-CI to build
 [PEP 513](https://www.python.org/dev/peps/pep-0513/)-compatible
 wheels for Python. It supports
 
-- manylinux1 for both Python 2 and 3 on 32 and 64 bit linux architectures.
+- manylinux1 for Python 2 and 3 on 64 bit linux architectures.
 - manylinux2010 for Python 2 and 3 on 64 bit linux architectures.
 
 Continuous integration setup with Travis + Docker
