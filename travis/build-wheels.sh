@@ -42,19 +42,19 @@ for PYBIN in /opt/python/*/bin; do
         echo "Skipping 3.5 because we don't use it"
     else
         "${PYBIN}/pip" install --upgrade pip
-        CFLAGS="-I/usr/local/ssl/include" LDFLAGS="-L/usr/local/ssl/lib" ${PYBIN}/pip wheel cryptography -w wheelhouse/ -f wheelhouse
-        "${PYBIN}/pip" wheel -r /io/dev-requirements.txt -w wheelhouse/ -f wheelhouse || true
+        CFLAGS="-I/usr/local/ssl/include" LDFLAGS="-L/usr/local/ssl/lib" ${PYBIN}/pip wheel cryptography -w /io/wheelhouse/ -f /io/wheelhouse
+        "${PYBIN}/pip" wheel -r /io/dev-requirements.txt -w /io/wheelhouse/ -f /io/wheelhouse || true
         # Do another run allowing dev builds, and do it with a separate run per
         # requirement so that one broken prerelease doesn't stop the rest from
         # being build---I'm looking at *you* statsmodel 0.8.0rc1
-        cat /io/dev-requirements.txt | tr '\n' '\0' | xargs -0 -I{} bash -c "${PYBIN}/pip wheel --pre {} -w wheelhouse/ -f wheelhouse || true"
+        cat /io/dev-requirements.txt | tr '\n' '\0' | xargs -0 -I{} bash -c "${PYBIN}/pip wheel --pre {} -w /io/wheelhouse/ -f /io/wheelhouse || true"
     fi
 done
 
 # Bundle external shared libraries into the wheels
-for whl in wheelhouse/*.whl; do
+for whl in /io/wheelhouse/*.whl; do
     repair_wheel "$whl"
 done
 
 # Remove platform-specific wheels
-rm -f wheelhouse/*-linux*.whl
+rm -f /io/wheelhouse/*-linux*.whl
