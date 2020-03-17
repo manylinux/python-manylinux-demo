@@ -26,3 +26,21 @@ install:
 script:
   - docker run --rm -e PLAT=$PLAT -v `pwd`:/io $DOCKER_IMAGE $PRE_CMD /io/travis/build-wheels.sh
   - ls wheelhouse/
+
+deploy:
+  provider: s3
+  access_key_id: AKIAJCVE5RZBSCMPSFSQ
+  secret_access_key:
+    secure: IdKBcym/65XUCYl/wBsyXYuKteY/tZf3DRJk3sVmQhgRlJNSRyaGCxXe6gkr/J/K9FpblkyqHpN4Eqqj+FXBPXGQ2QwfAIQehSoED0/R6RzqN/MsId7PTKGKDwryJOtYNXdzD4Gb4ErD9X4I6MKZd5xgWQx9hU0jO+XurMgWB4E=
+  bucket: parsely-artifacts
+  skip_cleanup: true
+  local_dir: wheelhouse
+  upload_dir: lib/wheels
+
+after_deploy:
+  - 'curl -XPOST -H "Accept: application/json" "https://rundeck.cogtree.com/api/16/job/880b3e78-708f-44d8-b065-4e3460cf54b9/run?authtoken=$RUNDECK_APIKEY"'
+
+env:
+  global:
+    # RUNDECK_APIKEY
+    - secure: "zgKg1Dd0K+Rn1SZbE+QBnnuR6ODrZx/zx7gSkiYC6mcCMUOVZfbmnPlUwaRN0sKVZYbwyDrLKdARc6hHYFg5x7LBmJIGpo/gXUa1drEAdLa4XH8ngk/5KnpcrGAthhbbUDmbOsLwgMxjetiE8S33YHqDFadbKlZMAjXFBCHL2JnWDR8I2QT99r/Lqy/jpzmrfW3e/eWgo23w1M6CyFXg1cgl8MzGO5Dvdh7YL5yUc1cggMmsWMnrby6hzGHijeYXeexpZ1+r/gT0zBQTd6GpUtsVnzv/wDZmg8QONH5YpRsr8UKUOlDEaWoUM+osbyQp+74eDXTFrg0UaRLxDdKevTEC3GZif/6pcVMdE1wjdXDiVgMGkCIC6W0Cp0jKBUXaeXsQLm2fgbz92qQepMHdV0QM4Je1lj+B9yG6Xta0tVx545YLzkRMT/ryXRo3xLCFGjZ+LpARY11t0FRrdZtq+hvTYxK6DAW9+nkz0YBJdGG29XFbSP0lldEPrwOqrHCwTA2BYBFQRoIhY3pSaGU8QL8vpZbuY2b8PpDVXIz3zpVSimrwXnS59AzNQUbWbGubhkAHQi3hK4JwiDWeKdh/jTIHZ7h2NF/YPOCEP68Srzp/SrrmUVqb1qhl4h2eeVHRGR4YWqVA/L+7LOYBAbZLvUrR5Jav1z66hTx5lo61IbQ="
