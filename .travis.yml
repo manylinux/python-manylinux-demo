@@ -32,7 +32,7 @@ deploy:
   upload_dir: lib/wheels
 
 after_deploy:
-  - 'curl -XPOST -H "Accept: application/json" "https://rundeck.cogtree.com/api/16/job/880b3e78-708f-44d8-b065-4e3460cf54b9/run?authtoken=$RUNDECK_APIKEY"'
+  - 'curl -H "Content-Type: application/json" -H "X-Auth-Token: $RUNDECK_APIKEY" -X POST "https://pypi-webhook.cogtree.com/hooks/wheel-aws-sync"'
 
 env:
   global:
