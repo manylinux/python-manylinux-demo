@@ -51,7 +51,6 @@ elasticsearch-curator
 elasticsearch-dsl
 elasticsearch1
 elasticsearch1-dsl
-engicore
 enum34
 et-xmlfile
 Fabric
