@@ -2,9 +2,9 @@ manylinux-wheel-builder
 =====================
 This project builds wheels for all our dependencies to put on our PyPI server. It is a replacement for https://github.com/Parsely/manylinux which was a much more complicated approach to the same thing.
 
-[![Build Status](https://travis-ci.org/Parsely/manylinux-wheel-builder.svg?branch=master)](https://travis-ci.org/Parsely/manylinux-wheel-builder)
+[![Build Status](https://travis-ci.com/Parsely/manylinux-wheel-builder.svg?branch=master)](https://travis-ci.com/Parsely/manylinux-wheel-builder)
 
-To add more packages to our list of wheels to build, update `dev-requirements.txt`. 
+To add more packages to our list of wheels to build, update `dev-requirements.txt`.
 
 `Cython` should always be at the top since it is used to build more efficient versions of many other packages.
 
@@ -21,7 +21,7 @@ Continuous integration setup with Travis + Docker
 The `.travis.yml` file in this repository sets up the build environment. The
 resulting build logs can be found at
 
-  https://travis-ci.org/Parsely/manylinux-wheel-builder
+  https://travis-ci.com/Parsely/manylinux-wheel-builder
 
 The `.travis.yml` file instructs Travis to run the script
 `travis/build-wheels.sh` inside of the various docker build environments. This
