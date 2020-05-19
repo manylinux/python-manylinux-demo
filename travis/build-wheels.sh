@@ -25,6 +25,11 @@ python-devel python-setuptools pcre pcre-devel \
 pandoc
 
 # psycopg2 won't build without this
+releasever=$(cat /etc/redhat-release | cut -d'.' -f1 | cut -d' ' -f3)
+yum install -y libxslt-devel
+curl https://parsely-public.s3.amazonaws.com/packages/rpm/pgdg95-centos${releasever}.tar.gz -o /tmp/pgdg95-centos${releasever}.tar.gz
+tar -zxf /tmp/pgdg95-centos${releasever}.tar.gz -C /tmp
+rpm -ivh /tmp/pgdg95-centos${releasever}/*
 export PG_HOME=/usr/pgsql-9.5
 export PATH=/usr/pgsql-9.5/bin:$PATH
 
