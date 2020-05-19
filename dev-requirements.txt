@@ -1,7 +1,13 @@
 Cython
+
+aiobotocore
 aiocassandra
+aiofiles
 aiohttp
+aioitertools
+aioredis
 asn1crypto
+async-generator
 async-timeout
 atomicwrites
 attrs
@@ -9,6 +15,7 @@ automat
 awesome-slugify
 backports.csv
 backports.functools-lru-cache
+bcrypt
 beautifulsoup4
 bitarray
 blinker
@@ -35,6 +42,7 @@ coverage
 cryptography
 cssselect
 datadog
+dateparser
 ddtrace
 decorator
 defusedxml
@@ -53,6 +61,7 @@ elasticsearch1
 elasticsearch1-dsl
 enum34
 et-xmlfile
+extruct
 Fabric
 fabric3
 fakeredis
@@ -67,6 +76,7 @@ Frozen-Flask
 futures
 fuzzywuzzy
 geoip2
+geomet
 gevent
 gnippy
 google-api-core
@@ -74,11 +84,15 @@ google-api-python-client
 google-auth
 google-auth-httplib2
 google-cloud-bigquery
+google-cloud-bigtable
 google-cloud-core
+google-cloud-pubsub
 google-resumable-media
 googleapis-common-protos
 greenlet
 grequests
+grpc-google-iam-v1
+grpcio
 gunicorn
 hiredis
 hll
@@ -107,7 +121,6 @@ libthumbor
 livereload
 locustio
 lxml
-mage
 Markdown
 MarkupSafe
 marshmallow
@@ -116,6 +129,7 @@ mf2py
 mmh3
 mock
 more-itertools
+msgpack
 msgpack-python
 multidict
 ndg-httpsclient
@@ -138,13 +152,13 @@ pluggy
 ply
 prettytable
 probably
+Protego
 protobuf
 psutil
 psycopg2
 psycopg2cffi-compat
 py
 py-vapid
-pyapplenews
 pyasn1
 pyasn1-modules
 pycparser
@@ -158,6 +172,7 @@ PyHamcrest
 pykafka
 pylru
 pymongo
+PyNaCl
 pyopenssl
 pypandoc
 pyparsing
@@ -166,10 +181,10 @@ pystorm
 pytest
 pytest-ordering
 python-dateutil
-python-dateutil
 python-Levenshtein
 python-memcached
 python-mimeparse
+python-rapidjson
 python-saml
 python-snappy
 python-twitter
@@ -192,6 +207,7 @@ retrying
 rq
 rsa
 ruamel.yaml
+ruamel.yaml.clib
 s3transfer
 Scrapy
 scrapyd
@@ -232,6 +248,7 @@ Unidecode
 uritemplate
 urllib3[secure]
 user-agents
+uvloop
 voluptuous
 w3lib
 wcwidth
