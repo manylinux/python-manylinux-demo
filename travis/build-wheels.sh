@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -x
 
-function repair_wheel {
+function repair_wheel() {
     wheel="$1"
     if ! auditwheel show "$wheel"; then
         echo "Skipping non-platform wheel $wheel"
@@ -14,15 +14,12 @@ function repair_wheel {
     fi
 }
 
-
 # Install packages required for wheel building
 yum install -y zlib-devel bzip2-devel ncurses-devel sqlite-devel \
-readline-devel tk-devel gdbm-devel db4-devel libpcap-devel\
-xz-devel gpg atlas-devel libev-devel libev snappy-devel freetype-devel \
-libpng-devel libffi-devel python-lxml postgresql95-libs \
-postgresql95-devel lapack-devel python \
-python-devel python-setuptools pcre pcre-devel \
-pandoc
+    readline-devel tk-devel gdbm-devel db4-devel libpcap-develxz-devel gpg \
+    atlas-devel libev-devel libev snappy-devel freetype-devel libpng-devel \
+    libffi-devel python-lxml postgresql95-libs postgresql95-devel \
+    lapack-devel python python-devel python-setuptools pcre pcre-devel pandoc
 
 # psycopg2 won't build without this
 releasever=$(cat /etc/redhat-release | cut -d'.' -f1 | cut -d' ' -f3)
