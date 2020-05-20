@@ -38,6 +38,7 @@ confluent-kafka
 constantly
 contextlib2
 contexttimer
+contextvars
 coverage
 cryptography
 cssselect
