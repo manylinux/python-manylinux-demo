@@ -29,8 +29,6 @@ tar -zxf /tmp/pgdg95-centos${releasever}.tar.gz -C /tmp
 rpm -ivh /tmp/pgdg95-centos${releasever}/*
 export PG_HOME=/usr/pgsql-9.5
 export PATH=/usr/pgsql-9.5/bin:$PATH
-export CFLAGS="-I/usr/local/ssl/include DGPR_MANYLINUX1=1"
-export LDFLAGS="-L/usr/local/ssl/lib"
 
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
@@ -46,6 +44,7 @@ for PYBIN in /opt/python/*/bin; do
         echo "Skipping 3.5 because we don't use it"
     else
         "${PYBIN}/pip" install --upgrade pip
+        CFLAGS="-I/usr/local/ssl/include" LDFLAGS="-L/usr/local/ssl/lib" ${PYBIN}/pip wheel --prefer-binary cryptography -w /io/wheelhouse/ -f /io/wheelhouse
         "${PYBIN}/pip" wheel --prefer-binary -r /io/dev-requirements.txt -w /io/wheelhouse/ -f /io/wheelhouse || true
         # Do another run allowing dev builds, and do it with a separate run per
         # requirement so that one broken prerelease doesn't stop the rest from
