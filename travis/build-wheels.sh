@@ -46,11 +46,11 @@ for PYBIN in /opt/python/*/bin; do
         echo "Skipping 3.5 because we don't use it"
     else
         "${PYBIN}/pip" install --upgrade pip
-        "${PYBIN}/pip" wheel -r /io/dev-requirements.txt -w /io/wheelhouse/ -f /io/wheelhouse || true
+        "${PYBIN}/pip" wheel --prefer-binary -r /io/dev-requirements.txt -w /io/wheelhouse/ -f /io/wheelhouse || true
         # Do another run allowing dev builds, and do it with a separate run per
         # requirement so that one broken prerelease doesn't stop the rest from
         # being build---I'm looking at *you* statsmodel 0.8.0rc1
-        cat /io/dev-requirements.txt | tr '\n' '\0' | xargs -0 -I{} bash -c "${PYBIN}/pip wheel --pre {} -w /io/wheelhouse/ -f /io/wheelhouse || true"
+        cat /io/dev-requirements.txt | tr '\n' '\0' | xargs -0 -I{} bash -c "${PYBIN}/pip wheel --prefer-binary --pre {} -w /io/wheelhouse/ -f /io/wheelhouse || true"
     fi
 done
 
