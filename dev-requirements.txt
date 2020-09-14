@@ -2,6 +2,7 @@ Cython
 
 aiobotocore
 aiocassandra
+aiocontextvars
 aiofiles
 aiohttp
 aioitertools
@@ -199,6 +200,7 @@ rdflib
 rdflib-jsonld
 readability-lxml
 redis
+redis-py-cluster
 regex
 requests
 requests-aws4auth
@@ -212,6 +214,7 @@ ruamel.yaml.clib
 s3transfer
 Scrapy
 scrapyd
+sentry-sdk
 serpextract
 service_identity
 setuptools
