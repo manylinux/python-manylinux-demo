@@ -323,6 +323,7 @@ typed-ast
 typing-extensions
 tzlocal
 ua-parser
+udger
 ujson
 Unidecode
 uritemplate
