@@ -1,0 +1,41 @@
+name: Build wheels
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - docker_image: quay.io/pypa/manylinux2010_x86_64
+            plat: manylinux2010_x86_64
+          - docker_image: quay.io/pypa/manylinux2014_x86_64
+            plat: manylinux2014_x86_64
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull docker image ${{ matrix.docker_image }}
+        run: |
+          docker pull ${{ matrix.docker_image }}
+      - name: Build ${{ matrix.plat }} wheels
+        env:
+          PLAT: ${{ matrix.plat }}
+          DOCKER_IMAGE: ${{ matrix.docker_image }}
+        run: |
+          docker run --rm -e PLAT=$PLAT -v `pwd`:/io $DOCKER_IMAGE $PRE_CMD /io/travis/build-wheels.sh
+          ls wheelhouse/
+      - name: S3 Sync
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: wheelhouse
+          DEST_DIR: lib/wheels
+      - name: Trigger rundeck
+        env:
+          RUNDECK_APIKEY: ${{ secrets.RUNDECK_APIKEY }}
+        run: |
+          curl -H "Content-Type: application/json" -H "X-Auth-Token: $RUNDECK_APIKEY" -X POST "https://pypi-webhook.cogtree.com/hooks/wheel-aws-sync"
