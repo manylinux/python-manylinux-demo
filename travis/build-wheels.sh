@@ -43,7 +43,7 @@ for PYBIN in /opt/python/*/bin; do
     elif [[ "$PYBIN" =~ cp35 ]]; then
         echo "Skipping 3.5 because we don't use it"
     else
-        "${PYBIN}/pip" install --upgrade pip
+        "${PYBIN}/pip" install --upgrade --upgrade-strategy only-if-needed pip auditwheel
         CFLAGS="-I/usr/local/ssl/include" LDFLAGS="-L/usr/local/ssl/lib" ${PYBIN}/pip wheel --prefer-binary cryptography -w /io/wheelhouse/ -f /io/wheelhouse
         "${PYBIN}/pip" wheel --prefer-binary -r /io/dev-requirements.txt -w /io/wheelhouse/ -f /io/wheelhouse || true
         # Do another run allowing dev builds, and do it with a separate run per
